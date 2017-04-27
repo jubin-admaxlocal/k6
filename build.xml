@@ -1,0 +1,31 @@
+<project name="BMSEntities" basedir="." default="start">
+	<property name="src.dir" value="src" />
+	<property name="build.dir" value="build" />
+	<property name="classes.dir" value="${build.dir}/classes" />
+	<property name="jar.dir" value="${build.dir}/jar" />
+
+	<target name="start" depends="cleanup,create,compile,jar">
+		<echo message="Ready to use..." />
+	</target>
+	<target name="cleanup">
+		<!--<echo message="deleting build directry..." />-->
+		<delete dir="${build.dir}" />
+	</target>
+	<target name="create">
+		<mkdir dir="${build.dir}" />
+		<!--<echo message="build directry created successfully."/>-->
+		<mkdir dir="${classes.dir}" />
+		<!--<echo message="classes directry created successfully."/>-->
+		<mkdir dir="${jar.dir}" />
+		<!--<echo message="jar directry created successfully."/>-->
+	</target>
+	<target name="compile">
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="no"/>
+		<!--<echo message=" source file has been compiled successfully and copied to classes directry." />-->
+	</target>
+	<target name="jar">
+		<jar destfile="${jar.dir}/bms-entities.jar" basedir="${classes.dir}">
+		</jar>
+		<!--<echo message="bms-entities.jar generated and available in ${jar.dir} directry" />-->
+	</target>
+</project>
